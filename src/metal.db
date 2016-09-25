@@ -1,0 +1,21 @@
+*3
+$3
+set
+$13
+some:12X31X12
+$136
+{"Type": "some", "Size": "12X31X12", "Price": 0, "Weight": 0,	"InitialQuantity": 0, "Sold": 0, "RemainingQuantity": 0, "WarnLimit": 123}
+*3
+$3
+set
+$13
+some:12X31X12
+$141
+{"Type": "some", "Size": "12X31X12", "Price": 0, "Weight": 20,	"InitialQuantity": 13, "Sold": 24, "RemainingQuantity": -11, "WarnLimit": 123}
+*3
+$3
+set
+$13
+some:12X31X12
+$142
+{"Type": "some", "Size": "12X31X12", "Price": 0, "Weight": 20,	"InitialQuantity": 200, "Sold": 24, "RemainingQuantity": 176, "WarnLimit": 123}

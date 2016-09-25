@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <meta charset="utf-8">
+    <title>Αποθήκη - Δάφνη Ο.Ε.</title>
+    <script src="public/js/jquery.min.js" onload="window && window.process && window.process.type ? window.$ = window.jQuery = module.exports : null"></script>
+
+    <link type="text/css" rel="stylesheet" href="public/css/bundle.css">
+
+
+    <style>body {background-color: #464646}</style>
+
+    <!-- <link type="text/css" rel="stylesheet" href="publi/bootstrap.css"> -->
+    <!-- <link type="text/css" rel="stylesheet" href="public/style/app.css"> -->
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+    <div class="modal fade" id="newElem" tabindex="-1" role="dialog" aria-labelledby="newElem" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <img src="public/icons/close.png" width="20px"/>
+            </button>
+                    <p class="modal-title">ΚΑΤΑΧΩΡΗΣΗ</p>
+                </div>
+                <form>
+
+                    <div class="modal-body">
+                        <div class="form-group has-danger">
+                            <label for="col-form-label" class="form-control-label">ΕΙΔΟΣ:</label>
+                            <input type="text" class="form-control form-control-danger" name="type">
+                            <div class="form-control-feedback invisibles">Αδυνατη η καταχωρηση αδειου πεδιου</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">ΔΙΑΣΤΑΣΕΙΣ:</label>
+                            <div class="form-group nested-group">
+                                <div class="input-group">
+                                    <input type="number" id="left-input" class="form-control">
+                                    <span class="input-group-addon">X</span>
+
+                                    <input type="number" id="middle-input" class="form-control">
+                                    <span class="input-group-addon">X</span>
+                                    <input type="number" id="right-input" class="form-control">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="col-form-label" class="form-control-label">ΟΡΙΟ:</label>
+                            <input type="number" name="type" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ΑΚΥΡΟ</button>
+                        <button type="submit" class="btn btn-primary"  data-dismiss="modal"  id="submit_new">ΚΑΤΑΧΩΡΗΣΕ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editElem" tabindex="-1" role="dialog" aria-labelledby="editElem" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <img src="public/icons/close.png" width="20px"/>
+            </button>
+                    <p class="modal-title">ΕΠΕΞΕΡΓΑΣΙΑ</p>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">ΔΙΑΣΤΑΣΕΙΣ:</label>
+                            <div class="form-group nested-group">
+                                <div class="input-group">
+                                    <input type="number" id="left-input" class="form-control">
+                                    <span class="input-group-addon">X</span>
+
+                                    <input type="number" id="middle-input" class="form-control">
+                                    <span class="input-group-addon">X</span>
+                                    <input type="number" id="right-input" class="form-control">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">ΤΙΜΗ:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">€</span>
+                                <input type="number" class="form-control" id="price" aria-label="Amount (to the nearest euro)">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">ΘΕΩΡΗΤΙΚΟ ΒΑΡΟΣ:</label>
+                            <input type="number" class="form-control" id="type-size"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">ΑΡΧΙΚΗ ΠΟΣΟΤΗΤΑ:</label>
+                            <input type="number" class="form-control" id="type-size"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">ΠΩΛΗΣΗ:</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="price" aria-label="Amount (to the nearest euro)">
+                                <span class="input-group-addon" id="priceTotal">0</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="col-form-label" class="form-control-label">ΟΡΙΟ:</label>
+                            <input type="number" name="type" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ΑΚΥΡΟ</button>
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit_edit">ΚΑΤΑΧΩΡΗΣΕ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" id="delElem" role="dialog" aria-labelledby="delElem" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <img src="public/icons/close.png" width="20px"/>
+            </button>
+                    <p class="modal-title">ΔΙΑΓΡΑΦΗ</p>
+                </div>
+                <div class="modal-body">
+                    <p>ΕΠΙΒΕΒΑΙΩΣΗ ΔΙΑΓΡΑΦΗΣ</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ΑΚΥΡΟ</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit_delete">ΕΠΙΒΕΒΑΙΩΣΗ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsive table starts here -->
+    <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+    <div class="col-sm-12 ">
+
+        <!-- Table starts here -->
+        <table id="example" class="table table-hover table-bordered order-column nowrap" cellspacing="0" width="100%">
+
+          <div class="toolbar-head tooltip-wrapper btn-contain btn-group" id="btns-main" data-placement="right" title="Επιλεξτε πρωτα ενα αντικειμενο απο τον παρακατω πινακα." role="group"></div>
+
+            <!-- class="table table-hover table-bordered table-mc-light-blue"> -->
+            <thead>
+                <tr>
+                    <th>ΕΙΔΟΣ</th>
+                    <th>ΔΙΑΣΤΑΣΕΙΣ</th>
+                    <th>ΤΙΜΗ</th>
+                    <th>ΘΕΩΡΗΤΙΚΟ ΒΑΡΟΣ</th>
+                    <th>ΑΡΧΙΚΗ ΠΟΣΟΤΗΤΑ</th>
+                    <th>ΠΩΛΗΣΗ</th>
+                    <th>ΥΠΟΛΟΙΠΟ ΑΠΟΘΗΚΗΣ</th>
+                    <th>ΟΡΙΟ</th>
+                </tr>
+            </thead>
+
+        </table>
+
+    <nav class="breadcrumb" style="border-top-right-radius: 0px; border-top-left-radius: 0px;">
+      <span class="breadcrumb-item">ΣΥΝΔΕΣΜΟΙ</span>
+      <span class="breadcrumb-item active">ΕΝΔΟΣ:</span>
+      <span class="breadcrumb-item active">ΕΚΤΟΣ:</span>
+      <span class="breadcrumb-item">ΔΙΚΤΥΟΥ</span>
+    </nav>
+
+    </div>
+
+
+    <script src="public/js/bundle.js"></script>
+    <script src="public/js/app.js"></script>
+
+
+</body>
+
+</html>

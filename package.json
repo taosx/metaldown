@@ -1,0 +1,32 @@
+{
+  "name": "metaldown-v002",
+  "version": "0.0.2",
+  "description": "Warehouse management",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "npm install && npm run compile && electron ./app",
+    "compile": "rimraf app/out && tsc",
+    "pack": "npm run compile && build --dir",
+    "dist": "npm run compile && build",
+    "release": "npm run compile && build"
+  },
+  "build": {
+    "asar": false,
+    "appId": "com.management.metaldown",
+    "category": "public.app-category.management",
+    "copyright": "Copyright © 2016-2017 Soukoulis E. Anastasios",
+    "productName": "Αποθήκη - Δάφνη Ο.Ε.",
+    "compression": "store",
+    "win": {
+      "loadingGif": "build/installation.gif",
+      "icon": "build/icon.ico"
+    }
+  },
+  "author": "Tasos Soukoulis",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.4.0",
+    "electron-builder": "^7.3.0"
+  }
+}

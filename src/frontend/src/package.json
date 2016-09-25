@@ -1,0 +1,17 @@
+{
+  "name": "metaldown-frontend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "jquery": "^3.1.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tasos Soukoulis <soukoulis.tasos@gmail.com>",
+  "license": "ISC"
+}
